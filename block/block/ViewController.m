@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+__weak NSString *string_weak_ = nil;
+
 @interface ViewController ()
 
 @end
@@ -38,12 +40,36 @@
     c = 3;
     clo();
     
-    // Do any additional setup after loading the view, typically from a nib.
+   
+    NSString *string = [NSString stringWithFormat:@"Maominghui"];
+    string_weak_ = string;
+    NSLog(@"string: %@", string_weak_);
+   
+    
+//    @autoreleasepool { NSString *string = [NSString stringWithFormat:@"leichunfeng"];
+//        
+//        string_weak_ = string;
+//    }
+    
+//     NSString *string = nil;
+//    @autoreleasepool {
+//        string = [NSString stringWithFormat:@"leichunfeng"];
+//        string_weak_ = string;
+//    }
+}
+    
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    NSLog(@"string: %@", string_weak_);
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    NSLog(@"string : %@", string_weak_);
 }
 
+-(void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning]; // Dispose of any resources that can be recreated. }
+}
 @end
